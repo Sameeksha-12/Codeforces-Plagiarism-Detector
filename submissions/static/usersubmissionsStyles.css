@@ -1,0 +1,55 @@
+/* User Submissions Page Specific Styles */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    padding: 20px 40px;
+    margin: 20px;
+    width: 90%;
+    max-width: 800px;
+    text-align: left;
+}
+
+h1 {
+    color: #343a40;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+ul.submission-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.submission-item {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+}
+
+.submission-item strong {
+    font-weight: bold;
+}
+
+.submission-item:hover {
+    background-color: #f8f9fa;
+}
+
+.submission-link {
+    text-decoration: none;
+    color: #000000;
+    transition: background-color 0.3s;
+}
+
+.submission-link:hover .submission-item {
+    background-color: #f8f9fa;
+}

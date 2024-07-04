@@ -1,0 +1,31 @@
+<!-- submissions/templates/submissions/user_submissions.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ user.handle }}'s Submissions</title>
+    {% load static %}
+    <link rel="stylesheet" href="{%static 'usersubmissionsStyles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>{{ user.handle }}'s Submissions</h1>
+        <ul class="submission-list">
+            {% for submission in submissions %}
+            <a href="https://codeforces.com/contest/{{ submission.contest_id }}/submission/{{ submission.submission_id }}" target="_blank" class="submission-link">
+                <li class="submission-item">
+                    <strong>Submission ID:</strong> {{ submission.submission_id }}<br>
+                    <strong>Problem Index:</strong> {{ submission.problem_index }}<br>
+                    <strong>Problem Name:</strong> {{ submission.problem_name }}<br>
+                    <strong>Verdict:</strong> {{ submission.verdict }}<br>
+                </li>
+            </a>
+            {% empty %}
+            <li>No submissions found.</li>
+            {% endfor %}
+        </ul>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!-- submissions/templates/submissions/contest_leaderboard.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ contest.name }} Leaderboard</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'leaderboardStyles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Leaderboard for {{ contest.name }}</h1>
+        <a href="{% url 'check_similarity' contest_id=contest.contest_id %}">
+            <button>Check Similarity</button>
+        </a>
+        <table>
+            <thead>
+                <tr>
+                    <th>Rank</th>
+                    <th>Handle</th>
+                    <th>Links</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <td>{{ user.rank }}</td>
+                    <td>{{ user.handle }}</td>
+                    <td>
+                        <a href="https://codeforces.com/profile/{{ user.handle }}" target="_blank">View Profile</a><br>
+                        <a href="{% url 'user_submissions' user_id=user.pk contest_id=contest.pk %}">View Submissions</a>
+                    </td>
+                    <!-- <td><a href="{% url 'user_submissions' user_id=user.pk contest_id=contest.pk %}">{{ user.handle }}</a></td> -->
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    
+</body>
+</html>
+

@@ -1,0 +1,24 @@
+<!-- submissions/templates/submissions/home.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Codeforces Contest Analyzer</title>
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Codeforces Contest Analyzer</h1>
+        <form method="post" action="">
+            {% csrf_token %}
+            <label for="contest_id">Enter Contest ID:</label>
+            <input type="number" name="contest_id" id="contest_id" required>
+            <button type="submit">Fetch Contest Data</button>
+        </form>
+        <footer>&copy; 2024 Codeforces Contest Analyzer</footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!-- submissions/templates/submissions/similarity_results.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Similarity Results for {{ contest.name }}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'similarityStyles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Similarity Results for {{ contest.name }}</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Submission 1</th>
+                    <th>Submission 2</th>
+                    <th>Problem Index</th>
+                    <th>Similarity Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for result in results %}
+                <tr>
+                    <td><a href="https://codeforces.com/contest/{{ result.submission1.contest_id }}/submission/{{ result.submission1.submission_id }}" target="_blank">{{ result.submission1.user.handle }} - {{ result.submission1.problem_index }}</a></td>
+                    <td><a href="https://codeforces.com/contest/{{ result.submission2.contest_id }}/submission/{{ result.submission2.submission_id }}" target="_blank">{{ result.submission2.user.handle }} - {{ result.submission2.problem_index }}</a></td>
+                    <!-- <td>{{ result.submission1.user.handle }} </td>
+                    <td>{{ result.submission2.user.handle }} </td> -->
+                    <td>{{ result.problem_index }}</td>
+                    <td>{{ result.similarity_score|floatformat:2 }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{% url 'contest_leaderboard' contest_id=contest.contest_id %}">Back to Leaderboard</a>
+    </div>
+    
+</body>
+</html>
